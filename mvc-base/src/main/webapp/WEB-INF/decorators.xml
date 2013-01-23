@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/decorators/">
+
+	<excludes>
+        <pattern>/rss/*</pattern>
+    </excludes>
+
+    <decorator name="default" page="twitterBoostrapLayout.jsp">
+        <pattern>*</pattern>
+    </decorator>
+
+</decorators>
