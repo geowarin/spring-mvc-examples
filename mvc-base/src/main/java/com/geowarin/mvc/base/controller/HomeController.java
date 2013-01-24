@@ -21,7 +21,7 @@ public class HomeController {
 		return "/home";
 	}
 	
-	@ModelAttribute("formDTO")
+	@ModelAttribute
 	public FormDTO createFormBean() {
 		return new FormDTO();
 	}
@@ -29,7 +29,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method=RequestMethod.POST)
 	public String submitMessage(@Valid FormDTO formDTO, BindingResult result,
 								SessionStatus sessionStatus,
-								Model model, RedirectAttributes redirectAttrs) {
+								RedirectAttributes redirectAttrs) {
 		
 		if (result.hasErrors()) {
 			return "/home";
