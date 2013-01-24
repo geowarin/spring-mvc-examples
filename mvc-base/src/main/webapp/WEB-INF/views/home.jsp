@@ -27,24 +27,16 @@
 				<form:form id="form" method="post" modelAttribute="formDTO">
 			
 					<spring:message code="message.typeMessage" var="typeMessage" />
-				  	<form:input cssClass="span6" path="messageFromUser" placeholder="${typeMessage}" autocomplete="off" />
+				  	<form:input cssClass="input-block-level" path="messageFromUser" placeholder="${typeMessage}" autocomplete="off" />
 			 		
-					<spring:bind path="messageFromUser">
-						<c:if test="${status.error}">
-							<div class="alert alert-error">
-								${status.errorMessage}
-						  	</div>
-						</c:if>
-					</spring:bind>
-					<%-- <form:errors path="messageFromUser" cssClass="errorMessage"  /> --%>
-		  			
+					<form:errors path="messageFromUser" cssClass="alert alert-error" element="div"  />
+					
 		  			<c:if test="${not empty message}">
 						<div id="message" class="alert alert-success">
 							<spring:message code="message.youWrote" arguments="${message}" htmlEscape="true" />
 						</div>	
 					</c:if>
 					
-					<br />
 				  	<button type="submit" class="btn">Submit</button>
 					
 				</form:form>
