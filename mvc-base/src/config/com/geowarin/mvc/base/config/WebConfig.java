@@ -43,12 +43,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return cookieLocaleResolver;
 	}
 
-	// @Override
-	// public void configureContentNegotiation(ContentNegotiationConfigurer
-	// configurer) {
-	// configurer.favorPathExtension(false).favorParameter(true);
-	// }
-
 	@Bean
 	public ViewResolver viewResolver() {
 

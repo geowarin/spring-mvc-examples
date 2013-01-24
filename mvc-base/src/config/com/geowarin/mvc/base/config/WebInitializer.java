@@ -1,8 +1,7 @@
 package com.geowarin.mvc.base.config;
 
 
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
+import javax.servlet.Filter;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -33,18 +32,10 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	}
 	
 	@Override
-	protected void registerDispatcherServlet(ServletContext servletContext) {
-		super.registerDispatcherServlet(servletContext);
+	protected Filter[] getServletFilters() {
 		
-		// SiteMesh
-		FilterRegistration.Dynamic siteMeshFilter = servletContext.addFilter("sitemesh", new SiteMeshFilter());
-		siteMeshFilter.addMappingForUrlPatterns(null, false, "*");
-		
-		// Encoding filter for user input
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
 		characterEncodingFilter.setEncoding("UTF-8");
-//		characterEncodingFilter.setForceEncoding(true);
-		FilterRegistration.Dynamic securityFilter = servletContext.addFilter("encodingFilter", characterEncodingFilter);
-		securityFilter.addMappingForUrlPatterns(null, false, "/*");
+		return new Filter[] { characterEncodingFilter, new SiteMeshFilter()};
 	}
 }
